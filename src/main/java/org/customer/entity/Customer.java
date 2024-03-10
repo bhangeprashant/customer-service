@@ -1,11 +1,8 @@
 package org.customer.entity;
 
 import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -193,7 +190,6 @@ public class Customer {
 
 	public Customer setMobile_phone(String mobile_phone) {
 		this.mobile = mobile_phone;
-
 		return this;
 	}
 

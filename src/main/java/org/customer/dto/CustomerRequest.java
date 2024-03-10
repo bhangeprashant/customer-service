@@ -1,12 +1,22 @@
 package org.customer.dto;
 
 import org.springframework.stereotype.Component;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Component
 public class CustomerRequest {
-
+	
+	@NotNull(message = "First Name is mandatory")
+	@NotBlank(message = "First Name should not be blank")
 	private String firstName;
+	
+	@NotNull(message = "Last Name is mandatory")
+	@NotBlank(message = "Last Name should not be blank")
 	private String lastName;
+	
 	private String middleName;
 	private String dateOfBirth;
 	private String addressLine1;
@@ -15,10 +25,21 @@ public class CustomerRequest {
 	private String city;
 	private String state;
 	private String country;
-	private String mobilePhone;
+	
+	@Size(min = 10, max = 12, message = "Number should have at minimum 10 and maximum 12 digits")
+	private String mobilePhone;	
+	
+	@Size(min = 10, max = 12, message = "Number should have at minimum 10 and maximum 12 digits")
 	private String homePhone;
+	
+	@Size(min = 10, max = 12, message = "Number should have at minimum 10 and maximum 12 digits")
 	private String workPhone;
+	
+	@NotNull(message = "EmailID is mandatory")
+	@NotBlank(message = "EmailID should not be blank")
+	@Pattern(regexp = "[a-z0-9]{3,50}(@)[a-z]{3,50}(.)[a-z]{2,3}", message = "Invalid email format")
 	private String emailID;
+	
 	private long customerId;
 
 	public String getFirstName() {

@@ -2,6 +2,8 @@ package org.customer.controller;
 
 import org.customer.dto.CustomerRequest;
 import org.customer.dto.CustomerResponse;
+import org.customer.dto.DiscountRequest;
+import org.customer.dto.DiscountResponse;
 import org.customer.service.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import jakarta.validation.Valid;
 
 @RestController
@@ -33,6 +34,12 @@ public class CustsomerServiceController {
 	@GetMapping(path = "/api/v1/customer/search/{mobile_number}")
 	public CustomerResponse searchCustomerByMobileNumber(String mobile_number) {
 		return CustomerServiceImpl.findByMobileNumber(mobile_number);
+	}
+	
+	@PostMapping(path = "/api/v1/customer/getDiscount", consumes = { "application/json", "application/xml" }, produces = {
+			"application/json", "application/xml" })
+	public DiscountResponse getDiscount(@Valid @RequestBody DiscountRequest request) {
+		return CustomerServiceImpl.getDiscount(request);
 	}
 
 }
