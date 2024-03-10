@@ -37,6 +37,7 @@ public class CustomerRequest {
 	
 	@NotNull(message = "EmailID is mandatory")
 	@NotBlank(message = "EmailID should not be blank")
+	@Pattern(regexp = "[a-z0-9]{3,50}(@)[a-z]{3,50}(.)[a-z]{2,3}", message = "Invalid email format")
 	private String emailID;
 	
 	private long customerId;
