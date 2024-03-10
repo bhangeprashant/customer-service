@@ -5,7 +5,10 @@ import jakarta.validation.constraints.NotBlank;
 
 public class DiscountRequest {
 
+	@Min(value = 0, message = "Age must be greater than or equal to 0")
 	private int age;
+
+	@NotBlank(message = "Gender should not be blank")
 	private String gender;
 
 

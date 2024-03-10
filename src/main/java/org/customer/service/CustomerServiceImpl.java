@@ -3,8 +3,12 @@ package org.customer.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
+import org.customer.common.ResponseCodes;
 import org.customer.dto.CustomerRequest;
 import org.customer.dto.CustomerResponse;
+import org.customer.dto.DiscountRequest;
+import org.customer.dto.DiscountResponse;
 import org.customer.dto.SearchCustomerResponse;
 import org.customer.entity.Customer;
 import org.customer.repo.CustomerRepository;
@@ -29,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
 	DiscountResponse discountResponse;
 
 	@Override
-	public CustomerResponse addCustomerDetails(@Valid CustomerRequest customerRequest) {
+	public CustomerResponse addCustomerDetails(CustomerRequest customerRequest) {
 
 		if (customerRepo.existsByEmail_id(customerRequest.getEmailID())) {
 			customerResponse.setStatus(ResponseCodes.ADD_CUSTOMER_DUPLICATE_EMAIL.getCode());
@@ -127,7 +131,7 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerResponse;
 	}
 
-	public DiscountResponse getDiscount(@Valid DiscountRequest request) {
+	public DiscountResponse getDiscount(DiscountRequest request) {
 
 		int age = request.getAge();
 		String gender = request.getGender();

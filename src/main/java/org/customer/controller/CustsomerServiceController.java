@@ -21,7 +21,7 @@ public class CustsomerServiceController {
 
 	@PostMapping(path = "/api/v1/customer/add", consumes = { "application/json", "application/xml" }, produces = {
 			"application/json", "application/xml" })
-	public CustomerResponse addCustomerDetails(@RequestBody CustomerRequest request) {
+	public CustomerResponse addCustomerDetails(@Valid @RequestBody CustomerRequest request) {
 		return CustomerServiceImpl.addCustomerDetails(request);
 	}
 
@@ -38,7 +38,7 @@ public class CustsomerServiceController {
 	
 	@PostMapping(path = "/api/v1/customer/getDiscount", consumes = { "application/json", "application/xml" }, produces = {
 			"application/json", "application/xml" })
-	public DiscountResponse getDiscount(@RequestBody DiscountRequest request) {
+	public DiscountResponse getDiscount(@Valid @RequestBody DiscountRequest request) {
 		return CustomerServiceImpl.getDiscount(request);
 	}
 

@@ -2,6 +2,8 @@ package org.customer.service;
 
 import org.customer.dto.CustomerRequest;
 import org.customer.dto.CustomerResponse;
+import org.customer.dto.DiscountRequest;
+import org.customer.dto.DiscountResponse;
 import org.customer.dto.SearchCustomerResponse;
 
 public interface CustomerService {
