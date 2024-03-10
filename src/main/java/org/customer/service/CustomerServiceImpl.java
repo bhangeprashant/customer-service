@@ -25,6 +25,9 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	SearchCustomerResponse searchCustomerResponse;
 
+	@Autowired
+	DiscountResponse discountResponse;
+
 	@Override
 	public CustomerResponse addCustomerDetails(@Valid CustomerRequest customerRequest) {
 
@@ -122,6 +125,28 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 
 		return customerResponse;
+	}
+
+	public DiscountResponse getDiscount(@Valid DiscountRequest request) {
+
+		int age = request.getAge();
+		String gender = request.getGender();
+		int discount = 0;
+
+		if (age < 30) {
+			discount += 10;
+		} else if (age >= 30 && age < 60) {
+			discount += 5;
+		} else if (age >= 60) {
+			discount += 15;
+		}
+
+		if (gender.equalsIgnoreCase("F")) {
+			discount += 5;
+		}
+
+		discountResponse.setDiscount(discount);
+		return discountResponse;
 	}
 
 }

@@ -13,5 +13,7 @@ public interface CustomerService {
 	//public CustomerResponse findByEmailId(String email_id);
 	
 	public CustomerResponse findByMobileNumber(String mobile_number);
+
+	public DiscountResponse getDiscount(DiscountRequest discountRequest);
 		
 }
